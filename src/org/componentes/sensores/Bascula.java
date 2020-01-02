@@ -1,9 +1,10 @@
 package org.componentes.sensores;
 
 public class Bascula {
-    int peso;
+    static int peso;
 
     public int getPeso() {
-        return this.peso;
+        return peso;
     }
+
 }

@@ -1,6 +1,7 @@
 package org.componentes.elevadores;
 
 import org.componentes.sensores.Bascula;
+import org.componentes.sensores.Nivel;
 
 public class Ascensor {
     int posicionActual;
@@ -14,7 +15,7 @@ public class Ascensor {
     public void llamar(int i) {
         this.cerrarPuerta();
         if (this.comprobarCarga()) {
-            this.ir(i - this.getPosicionActual());
+            this.ir(i );
         } else {
             this.avisoSobrecarga();
         }
@@ -22,10 +23,21 @@ public class Ascensor {
     }
 
     private void ir(int i) {
+        Nivel planta = new Nivel();
+        if ((i - this.getPosicionActual())<0) {
+            for (int j=this.posicionActual; j==i; j++) {
+                planta.subir();
+            }
+        } else {
+            for (int j=this.getPosicionActual(); j==i; j--){
+                planta.bajar();
+            }
+        }
     }
 
     private int getPosicionActual() {
-        return 0;
+        Nivel altura = new Nivel();
+        return altura.getPlanta();
     }
 
     private boolean comprobarCarga() {
