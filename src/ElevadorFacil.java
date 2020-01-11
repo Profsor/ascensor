@@ -5,5 +5,6 @@ public class ElevadorFacil {
         Ascensor ascen = new Ascensor(350);
 
         ascen.llamar(2);
+        ascen.llamar(6);
     }
 }
