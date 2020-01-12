@@ -11,8 +11,7 @@ public class Bascula {
      * @return Devuelve el valor entero
      */
     public int getPeso() {
-        int pesoActual = (int) Math.floor(Math.random()*(MAXIMO_PESO - MINIMO_PESO +1)+MINIMO_PESO);
-        return pesoActual;
+        return (int) Math.floor(Math.random()*(MAXIMO_PESO - MINIMO_PESO +1)+MINIMO_PESO);
     }
 
 }

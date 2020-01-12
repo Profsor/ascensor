@@ -59,7 +59,7 @@ public class Ascensor {
 
     /**
      * Indica la planta actual en la que está el ascensor.
-     * @return
+     * @return devuelve el valor de la variable privada
      */
     private int getPlantaActual() {
         return this.plantaActual;
@@ -67,7 +67,7 @@ public class Ascensor {
 
     /**
      * Verifica que la carga del ascensor no supera el máximo permitido.
-     * @return
+     * @return devuelve el valor de la variable privada
      */
     private boolean comprobarCarga() {
         Bascula pesaje = new Bascula();
