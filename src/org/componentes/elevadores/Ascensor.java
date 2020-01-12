@@ -61,7 +61,7 @@ public class Ascensor {
      * Indica la planta actual en la que está el ascensor.
      * @return devuelve el valor de la variable privada
      */
-    private int getPlantaActual() {
+    public int getPlantaActual() {
         return this.plantaActual;
     }
 
@@ -79,6 +79,7 @@ public class Ascensor {
     }
 
     private void avisoSobrecarga() {
+        System.out.println("Ascensor sobrecargado");
     }
 
     private void abrirPuerta() {
