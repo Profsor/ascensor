@@ -1,24 +1,14 @@
 package org.componentes.sensores;
 
 public class Nivel {
-    /**
-     * la variable nivel comienza en el suele nivel 0.
-     */
-    static int nivel;
 
-    public static void setNivel(int i) {
-        nivel = i;
+    public static int subir(int valor) {
+        valor = valor + 1;
+        return valor;
     }
 
-    public static int getNivel() {
-        return nivel;
-    }
-
-    public void subir() {
-        nivel++;
-    }
-
-    public void bajar() {
-        nivel--;
+    public static int bajar(int valor) {
+        valor = valor - 1;
+        return valor;
     }
 }

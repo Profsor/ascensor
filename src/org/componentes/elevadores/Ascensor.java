@@ -5,15 +5,24 @@ import org.componentes.sensores.Nivel;
 
 public class Ascensor {
     int pesoMax;
+    boolean puertaCerrada;
+    private int plantaActual;
+
+    public void setPlantaActual(int plantaActual) {
+        this.plantaActual = plantaActual;
+    }
 
     /**
      * Crea un ascensor, posicionado en la planta baja (0).
      * Se indica el peso máximo que soporta del ascensor.
+     * Comienza en la planta 0, o planta baja.
+     * Inicialmente la puerta está cerrada.
      * @param i peso máximo de carga que soporta el ascensor.
      */
     public Ascensor(int i) {
         this.pesoMax = i;
-        Nivel.setNivel(0);
+        this.puertaCerrada = true;
+        setPlantaActual(0);
     }
 
     /**
@@ -36,14 +45,14 @@ public class Ascensor {
      * @param i Planta destino.
      */
     private void ir(int i) {
-        Nivel altura = new Nivel();
-        if ((i - this.getPosicionActual())<0) {
-            for (int j=Nivel.getNivel(); j==i; j++) {
-                altura.subir();
+
+        if ((i - getPlantaActual()) > 0) {
+            for (int j=getPlantaActual(); j < i; j++) {
+                setPlantaActual(Nivel.subir(getPlantaActual()));
             }
         } else {
-            for (int j=this.getPosicionActual(); j==i; j--){
-                altura.bajar();
+            for (int j = getPlantaActual(); j > i; j--){
+                setPlantaActual(Nivel.bajar(getPlantaActual()));
             }
         }
     }
@@ -52,8 +61,8 @@ public class Ascensor {
      * Indica la planta actual en la que está el ascensor.
      * @return
      */
-    private int getPosicionActual() {
-        return Nivel.getNivel();
+    private int getPlantaActual() {
+        return this.plantaActual;
     }
 
     /**
@@ -66,11 +75,13 @@ public class Ascensor {
     }
 
     private void cerrarPuerta() {
+        this.puertaCerrada = true;
     }
 
     private void avisoSobrecarga() {
     }
 
     private void abrirPuerta() {
+        this.puertaCerrada = false;
     }
 }
